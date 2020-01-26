@@ -5,7 +5,11 @@ public class Tic_Tac_Toe {
 	{
 		Scanner scan = new Scanner(System.in);
 		 char board[][] = new char[4][4];
-		 
+		 System.out.println("Which symbol do you want? \n1) X \n2) 0");
+		 System.out.println("Player 1: ");
+		 char ch1 = scan.next().charAt(0);
+		 System.out.println("Player 2: ");
+		 char ch2 = scan.next().charAt(0);
 		 board = intialize(board);
 		 String Winner = null;
 		 int count = 1;
@@ -14,7 +18,7 @@ public class Tic_Tac_Toe {
 		 {
 			 System.out.println("Player1 enter : ");
 			 int player1 = scan.nextInt();
-			 Insert(board,player1,'X');
+			 Insert(board,player1,ch1);
 			 if(count == 9 && Winner == null)
 				 break;
 			 
@@ -26,7 +30,7 @@ public class Tic_Tac_Toe {
 				 }
 			 System.out.println("Player2 enter : ");
 			 int player2 = scan.nextInt();
-			 Insert(board,player2,'0');
+			 Insert(board,player2,ch2);
 			 if(count % 2 == 0)
 				 if(check(board) == true)
 				 {
