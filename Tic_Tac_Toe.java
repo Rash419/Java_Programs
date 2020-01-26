@@ -9,11 +9,14 @@ public class Tic_Tac_Toe {
 		 board = intialize(board);
 		 String Winner = null;
 		 int count = 1;
+		 show_board(board);
 		 while(Winner == null && count <= 9)
 		 {
 			 System.out.println("Player1 enter : ");
 			 int player1 = scan.nextInt();
 			 Insert(board,player1,'X');
+			 if(count == 9 && Winner == null)
+				 break;
 			 
 			 if(count % 2 != 0)
 				 if(check(board) == true)
@@ -32,19 +35,29 @@ public class Tic_Tac_Toe {
 				 }
 			 show_board(board);
 			 System.out.println("\t #############");
-			 count++;
+			 count+=2;
 		 }
-		 System.out.println("Winner is " + "/Winner/");
+		 if(Winner == null)
+		 {
+			 System.out.println("Game Over : It is draw");
+		 }
+		 else
+		 {
+			 System.out.println("Winner is " + Winner); 
+		 }
 		 System.out.println("\n\nFinal Result : ");
 		 show_board(board);
 		 
 	}
 	public static char[][] intialize(char board[][])
-	{
+	{	
+		char x='1';
 		for(int i=1;i<=3;i++)
 			for(int j=1;j<=3;j++)
-				board[i][j] = ' ';
-		
+			{
+				board[i][j] = x;
+				x++;
+			}
 		return board;
 	}
 	public static void show_board(char board[][])
@@ -71,7 +84,7 @@ public class Tic_Tac_Toe {
 			else
 			{
 				int arr[] = posi(pos);
-				if(board[arr[0]][arr[1]] != ' ')
+				if(board[arr[0]][arr[1]] == 'X' || board[arr[0]][arr[1]] == '0')
 				{
 					System.out.println("It is already filled enter a different number");
 					System.out.println("Enter number again: ");
